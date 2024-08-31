@@ -3,9 +3,130 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gray-800 text-white">
-    <h1 class="text-3xl font-bold">Hello world!</h1>
+    <nav class="bg-gray-900 p-4 mb-6">
+      <div
+        class="container max-w-6xl mx-auto flex flex-col sm:flex-row gap-8 items-center justify-between"
+      >
+        <!-- Search Area -->
+        <div class="relative w-full">
+          <input
+            type="text"
+            id="search"
+            class="bg-gray-700 rounded-full p-2 px-10 w-1/2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:animate-glow"
+            placeholder="Search..."
+          />
+        </div>
+
+        <!-- Cart Icon with Item Count -->
+        <div class="relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-shopping-cart text-gray-400 w-10"
+          >
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path
+              d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61l1.6-9H5.48"
+            />
+          </svg>
+          <small
+            class="cart-count absolute -top-2 -right-2 bg-red-700 rounded-full text-xs text-white flex items-center justify-center h-5 w-5"
+            >2</small
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex flex-row mx-auto container max-w-6xl">
+      <!-- Filter Wrapper -->
+      <div
+        class="max-w-[10rem] w-full p-4 space-y-4 bg-gray-800 rounded-lg shadow-lg"
+      >
+        <h2 class="text-2xl font-semibold text-white">Filters</h2>
+        <h3 class="text-xl text-gray-300">Categories</h3>
+        <div class="filters-container space-y-3 text-gray-200">
+          <div class="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              class="check h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              id="cameras"
+            />
+            <label for="cameras" class="text-lg">Cameras</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              class="check h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              id="games"
+            />
+            <label for="games" class="text-lg">Games</label>
+          </div>
+          <div class="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              class="check h-5 w-5 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              id="televisions"
+            />
+            <label for="televisions" class="text-lg">Televisions</label>
+          </div>
+        </div>
+      </div>
+      <!-- Products Wrapper -->
+      <div class="flex flex-wrap justify-between gap-6">
+        <!-- Product Card -->
+        <div
+          class="bg-gray-700 rounded-lg mx-4 p-6 flex-1 min-w-[280px] transform transition-transform duration-700 hover:-translate-y-2 hover:bg-gray-600 hover:scale-105"
+        >
+          <div class="overflow-hidden rounded-lg">
+            <img
+              src="https://via.placeholder.com/150"
+              alt="Product Image"
+              class="w-full h-40 object-cover transform transition-transform duration-500 hover:scale-110"
+            />
+          </div>
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-white mb-2">Product 1</h3>
+            <p class="text-gray-300 mb-4">Description of product 1.</p>
+            <div class="flex items-center justify-between mt-4">
+              <div class="flex flex-col items-center">
+                <button
+                  class="bg-blue-500 h-10 w-10 text-white px-2 py-1 rounded hover:bg-blue-600 transition-colors duration-200"
+                >
+                  +
+                </button>
+                <span class="text-lg text-white">1</span>
+                <button
+                  class="bg-blue-500 text-white h-10 w-10 px-2 py-1 rounded hover:bg-blue-600 transition-colors duration-200"
+                >
+                  -
+                </button>
+              </div>
+              <div class="px-2 space-x-2">
+                <button
+                  class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-200"
+                >
+                  Add to Cart
+                </button>
+                <!-- <button
+                  class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-200"
+                >
+                  Remove from Cart
+                </button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
