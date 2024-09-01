@@ -10,8 +10,8 @@ const checkBoxes = document.querySelectorAll(".check");
 let cartItemCount = 0;
 const productElements = [];
 
-/* Loop over the products */
-products.forEach((product) => {
+/* create a product element in DOM */
+function createProductElement(product) {
   const productElement = document.createElement("div");
   productElement.className =
     "bg-gray-700 rounded-lg mx-4 p-6 flex-1 min-w-[280px] transform transition-transform duration-700";
@@ -33,7 +33,7 @@ products.forEach((product) => {
       <div class="flex items-center justify-between mt-4">
         <div class="space-x-2">
           <button
-            class="bg-gray-500 text-white px-4 py-2 rounded transition-colors duration-200"
+            class="status bg-gray-500 text-white px-4 py-2 rounded transition-colors duration-200"
           >
             Add to Cart
           </button>
@@ -41,7 +41,36 @@ products.forEach((product) => {
       </div>
     </div>
   `;
+  productElement.querySelector(".status").addEventListener("click", updateCart);
+  return productElement;
+}
 
+/* update cart */
+function updateCart(e) {
+  const statusElement = e.target;
+  if (statusElement.classList.contains("added")) {
+    // remove from cart
+    statusElement.classList.remove("added");
+    statusElement.innerText = "Add to Cart";
+    statusElement.classList.add("bg-gray-500");
+    statusElement.classList.remove("bg-red-500");
+    cartItemCount--;
+  } else {
+    // add to the cart
+    statusElement.classList.add("added");
+    statusElement.innerText = "Remove from Cart";
+    statusElement.classList.remove("bg-gray-500");
+    statusElement.classList.add("bg-red-500");
+    cartItemCount++;
+  }
+
+  // Update cart Item
+  cartCount.innerText = cartItemCount.toString();
+}
+
+/* Loop over the products */
+products.forEach((product) => {
+  const productElement = createProductElement(product);
   productElements.push(productElement);
   productsWrappers.appendChild(productElement);
 });
