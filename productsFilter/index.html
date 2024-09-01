@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module" src="./script.js"></script>
   </head>
   <body class="bg-gray-800 text-white">
     <nav class="bg-gray-900 p-4 mb-6">
@@ -40,7 +41,8 @@
             />
           </svg>
           <small
-            class="cart-count absolute -top-2 -right-2 bg-red-700 rounded-full text-xs text-white flex items-center justify-center h-5 w-5"
+            id="cart-count"
+            class="absolute -top-2 -right-2 bg-red-700 rounded-full text-xs text-white flex items-center justify-center h-5 w-5"
             >2</small
           >
         </div>
@@ -54,7 +56,7 @@
       >
         <h2 class="text-2xl font-semibold text-white">Filters</h2>
         <h3 class="text-xl text-gray-300">Categories</h3>
-        <div class="filters-container space-y-3 text-gray-200">
+        <div id="filters-container" class="space-y-3 text-gray-200">
           <div class="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -82,50 +84,8 @@
         </div>
       </div>
       <!-- Products Wrapper -->
-      <div class="flex flex-wrap justify-between gap-6">
+      <div id="product-wrapper" class="flex flex-wrap justify-between gap-6">
         <!-- Product Card -->
-        <div
-          class="bg-gray-700 rounded-lg mx-4 p-6 flex-1 min-w-[280px] transform transition-transform duration-700 hover:-translate-y-2 hover:bg-gray-600 hover:scale-105"
-        >
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="https://via.placeholder.com/150"
-              alt="Product Image"
-              class="w-full h-40 object-cover transform transition-transform duration-500 hover:scale-110"
-            />
-          </div>
-          <div class="p-4">
-            <h3 class="text-xl font-semibold text-white mb-2">Product 1</h3>
-            <p class="text-gray-300 mb-4">Description of product 1.</p>
-            <div class="flex items-center justify-between mt-4">
-              <div class="flex flex-col items-center">
-                <button
-                  class="bg-blue-500 h-10 w-10 text-white px-2 py-1 rounded hover:bg-blue-600 transition-colors duration-200"
-                >
-                  +
-                </button>
-                <span class="text-lg text-white">1</span>
-                <button
-                  class="bg-blue-500 text-white h-10 w-10 px-2 py-1 rounded hover:bg-blue-600 transition-colors duration-200"
-                >
-                  -
-                </button>
-              </div>
-              <div class="px-2 space-x-2">
-                <button
-                  class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors duration-200"
-                >
-                  Add to Cart
-                </button>
-                <!-- <button
-                  class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors duration-200"
-                >
-                  Remove from Cart
-                </button> -->
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </main>
   </body>
