@@ -11,6 +11,8 @@
 - change the layout of the single product elemtn in list
 - change the layout of categories checkboxes
   - fix the bug on filters card
+  -
+- change teh layout of the scroll bar
 
 # WORKING ON
 

@@ -7,6 +7,29 @@ const cartCountElement = document.querySelector("#cart-count");
 const searchInput = document.querySelector("#search");
 const filterCheckboxes = document.querySelectorAll(".check");
 
+// Header ------------------------------------------
+
+// JavaScript to toggle the visibility of the header
+let timeout;
+const header = document.getElementById("sticky-header");
+
+// Detect scrolling
+window.addEventListener("scroll", () => {
+  // Hide the header when scrolling
+  header.classList.remove("slide-up");
+  header.classList.add("slide-down");
+
+  // Clear any existing timeout
+  clearTimeout(timeout);
+
+  // Show the header when the user stops scrolling
+  timeout = setTimeout(() => {
+    header.classList.remove("slide-down");
+    header.classList.add("slide-up");
+  }, 1000); // Adjust this delay to control how long the user has to stop scrolling
+});
+// ------------------------------------------
+
 let cartItemCount = 0;
 const productElements = [];
 

@@ -10,6 +10,17 @@
   }
 }
 
+/* Custom animation for the header */
+.slide-down {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide-up {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
+}
+
 .focus\:animate-glow:focus {
   animation: glow 1.5s ease-in-out infinite;
 }

@@ -8,10 +8,11 @@
     <script type="module" src="./script.js"></script>
   </head>
   <body class="bg-gray-800 text-white">
-    <nav class="bg-gray-900 p-4 mb-6">
-      <div
-        class="container max-w-6xl mx-auto flex flex-col sm:flex-row gap-8 items-center justify-between"
-      >
+    <header
+      id="sticky-header"
+      class="fixed top-0 w-full bg-gray-900 shadow-md p-4 transition-transform duration-500 z-50 slide-down"
+    >
+      <div class="container mx-auto flex justify-between items-center">
         <!-- Search Area -->
         <div class="relative w-full">
           <input
@@ -46,13 +47,11 @@
           ></small>
         </div>
       </div>
-    </nav>
+    </header>
 
-    <main class="flex flex-row mx-auto container max-w-6xl">
+    <main class="flex flex-row mx-auto container my-20">
       <!-- Filter Wrapper -->
-      <div
-        class="max-w-[10rem] w-full p-4 space-y-4 bg-gray-800 rounded-lg shadow-lg"
-      >
+      <div class="w-full p-4 space-y-4 bg-gray-800 rounded-lg shadow-lg">
         <h2 class="text-2xl font-semibold text-white">Filters</h2>
         <h3 class="text-xl text-gray-300">Categories</h3>
         <div id="filters-container" class="space-y-3 text-gray-200">
