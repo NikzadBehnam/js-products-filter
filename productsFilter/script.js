@@ -2,6 +2,7 @@ import products from "./products.js";
 
 /* DOM Elements */
 const productWrapper = document.querySelector("#product-wrapper");
+const filtersContainer = document.querySelector("#filters-container");
 const cartCountElement = document.querySelector("#cart-count");
 const searchInput = document.querySelector("#search");
 const filterCheckboxes = document.querySelectorAll(".check");
@@ -9,11 +10,6 @@ const filterCheckboxes = document.querySelectorAll(".check");
 let cartItemCount = 0;
 const productElements = [];
 
-/**
- * Creates a product element in the DOM.
- * @param {Object} product - The product object containing name, category, and price.
- * @returns {HTMLElement} - The DOM element representing the product.
- */
 function createProductElement(product) {
   const productElement = document.createElement("div");
   productElement.className =
@@ -47,10 +43,6 @@ function createProductElement(product) {
   return productElement;
 }
 
-/**
- * Updates the cart when a product is added or removed.
- * @param {Event} event - The click event triggered by the button.
- */
 function handleCartUpdate(event) {
   const button = event.target;
   const isAddedToCart = button.classList.contains("added");
@@ -78,20 +70,49 @@ function handleCartUpdate(event) {
     // Remove the animation class after it's done to prevent continuous bouncing
     setTimeout(() => {
       cartCountElement.classList.remove("animate-bounce");
-    }, 500); // The bounce animation duration (adjust if necessary)
+    }, 1500); // The bounce animation duration (adjust if necessary)
   } else {
     cartCountElement.classList.add("hidden");
   }
 }
 
-/**
- * Initializes the product display by creating and appending product elements to the DOM.
- */
+// Appending product elements to the DOM.
 function initializeProductDisplay() {
   products.forEach((product) => {
     const productElement = createProductElement(product);
     productElements.push(productElement);
     productWrapper.appendChild(productElement);
+  });
+}
+
+// Product Filtering
+filtersContainer.addEventListener("change", handleProductFilter);
+searchInput.addEventListener("input", handleProductFilter);
+
+function handleProductFilter(event) {
+  // to get the search term
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  // to get all the checked categories id
+  const checkedCagetories = Array.from(filterCheckboxes)
+    .filter((check) => check.checked)
+    .map((check) => check.id);
+
+  // loop over the products and check for matches
+  productElements.forEach((productElement, index) => {
+    const product = products[index];
+    // check if the product matches the seach term
+    const searchTermMatched = product.name.toLowerCase().includes(searchTerm);
+    const isInCheckedCategory =
+      checkedCagetories.length === 0 ||
+      checkedCagetories.includes(product.category);
+
+    // show or hide the product based on the search term and category
+    if (searchTermMatched && isInCheckedCategory) {
+      productElement.classList.remove("hidden");
+    } else {
+      productElement.classList.add("hidden");
+    }
   });
 }
 
