@@ -11,10 +11,19 @@
 - change the layout of the single product elemtn in list
 - change the layout of categories checkboxes
   - fix the bug on filters card
-  -
 - change teh layout of the scroll bar
+- add list view toggle
+- remove the mechanism of hidding the header on scroll, instead make a setting button
+
+  - on hover
+
+- make dynamic checkbox filters
 
 # WORKING ON
+
+- add the page footer, with same behaviour as the top header bar
+
+# DONE
 
 - the top header bar should be sticky and animated
   - add some opacty
